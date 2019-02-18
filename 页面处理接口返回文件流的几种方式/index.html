@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+</head>
+<body>
+	<a href="/files/test.xlsx">直接通过链接下载文件</a>
+	<form action="/files/test.xlsx" method="POST">
+		<button>通过form表单下载</button>
+	</form>
+  <a id="fileReaderBlobLink" href="javascript:void(0)">在ajax请求的回调中用FileReader处理Blob</a>
+	<br/>
+  <a id="URLBlobLink" href="javascript:void(0)">在ajax请求的回调中用URL处理Blob</a>
+</body>
+<script type="text/javascript">
+	function download(url){
+		var link = document.createElement('a');
+		link.href = url;
+		link.download = 'test.xlsx';
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	}
+  document.body.addEventListener('click', (e)=>{
+		if(e.target.href === 'javascript:void(0)'){
+			fetch('/files/test.xlsx').then((res)=>{
+				res.blob().then((blobContent)=>{
+					if(e.target.id == 'fileReaderBlobLink'){
+						var fileReader = new FileReader();
+						fileReader.readAsDataURL(blobContent);
+						console.warn(fileReader.result);
+						fileReader.onload = ()=>{
+							download(fileReader.result);
+						}
+					}else{
+						var blob = new Blob([blobContent]);
+						download(URL.createObjectURL(blob));
+					}
+				})
+			})
+		}
+	}, true)
+</script>
+</html>
