@@ -7,14 +7,14 @@
 <body>
 	<div>直接调用js计算50250/50000=<span id='cat1'></span></div>
 	<div>直接调用js计算(50250/50000).toFixed(2)=<span id='cat2'></span>（这里保留小数点后两位的结果没有正确的四舍五入）</div>
-	<div>直接调用js计算(50250/50000).toFixed(3)=<span id='cat3'></span></div>
+	<div>直接调用js计算(50250/50000 * 10)=<span id='cat3'></span>（这里看到浮点存储的结果确实不到5导致保留两位后被舍去）</div>
 	<div>使用bignumber.js计算(50250/50000).toFixed(2)=<span id='cat4'></span></div>
 </body>
 <script src='./bignumber.min.js'></script>
 <script>
 	document.querySelector('#cat1').innerHTML = 50250/50000;
 	document.querySelector('#cat2').innerHTML = (50250/50000).toFixed(2);
-	document.querySelector('#cat3').innerHTML = (50250/50000).toFixed(3);
+	document.querySelector('#cat3').innerHTML = (50250/50000 * 10);
 	document.querySelector('#cat4').innerHTML = new BigNumber(50250/50000).toFixed(2);
 </script>
 </html>
