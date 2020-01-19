@@ -1,0 +1,1 @@
+将mousemove绑定在document上，使得鼠标在拖拽元素并移动出浏览器后也可以继续监听mousemove事件。
