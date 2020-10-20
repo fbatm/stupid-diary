@@ -1,0 +1,3 @@
+参考webpack-clear-console制作
+在处理chunks的阶段，代码是包含了node_modules依赖的完整代码，如果在dev下使用会导致意外的错误。
+在处理modules的阶段可根据文件source，避开node_modules；直接修改module._source._value后打包出来的结果有意外的错误。
