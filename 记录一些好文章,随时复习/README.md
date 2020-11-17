@@ -5,3 +5,6 @@
 
 ##浏览器相关
 1、[浏览器缓存机制] (https://www.jianshu.com/p/54cc04190252)
+
+##事件循环
+1、[浏览器环境与node环境下事件循环的区别] (https://zhuanlan.zhihu.com/p/33058983)
