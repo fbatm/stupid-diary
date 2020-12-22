@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "moduleResolution": "node",
+    "target": "ES2016",
+    "module": "UMD",
+    "declaration": true,
+    "outDir": "./dist"
+  },
+  "include": [
+      "./src/**/*"
+  ]
+}
