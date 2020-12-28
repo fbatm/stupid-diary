@@ -13,3 +13,52 @@
 
 ## react-redux5升级到7
 1. 5版采用的是childContext来传递store，升级到7后需要用react-redux的provider包裹住来传递store
+
+## react-codemod & jscodeshift
+1. react升级时批量修改代码利用官方提供的react-codemod脚本，最终是运行`jscodeshift`来执行,jscodeshift如要使用自己的babel配置文件，需要设置--parser=babylon，以使--parser-config=FILE生效
+   原因见源码如下，可见官方希望使用自己的babel config时使用babylon作为parser
+   ```
+    //.getParser.js
+    module.exports = function getParser(parserName, options) {
+      switch (parserName) {
+        case "babylon":
+          return require("../parser/babylon")(options);
+        case "flow":
+          return require("../parser/flow")(options);
+        case "ts":
+          return require("../parser/ts")(options);
+        case "tsx":
+          return require("../parser/tsx")(options);
+        case "babel":
+        default:
+          return require("../parser/babel5Compat")(options);
+      }
+    };
+   ```
+   ```
+   //.babel5Compat.js
+   /**
+    * Wrapper to set default options. Doesn't accept custom options because in that
+    * case babylon should be used instead.
+    */
+    module.exports = function() {
+      return {
+        parse(code) {
+          return babylon.parse(code, options);
+        },
+      };
+    };
+   ```
+   ```
+   //.babylon.js
+   /**
+    * Wrapper to set default options
+    */
+    module.exports = function(options=defaultOptions) {
+      return {
+        parse(code) {
+          return babylon.parse(code, options);
+        },
+      };
+    };
+   ```
