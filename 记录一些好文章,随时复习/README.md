@@ -25,6 +25,7 @@
 5. [es6模块与commjs模块的区别](https://es6.ruanyifeng.com/#docs/module-loader)
 6. [html标签中class="no-js"的由来(Modernizr)](https://blog.justwd.net/2012/02/about-no-js/)
 7. [js处理文件的示例](https://developer.mozilla.org/zh-CN/docs/Web/API/File/Using_files_from_web_applications)
+8. [addEventListener详解](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
 
 ## css
 1. [包含块](https://developer.mozilla.org/zh-CN/docs/Web/CSS/All_About_The_Containing_Block)
