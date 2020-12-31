@@ -20,8 +20,9 @@
 
 ## js方面
 1. 渐进式注水+骨架屏
-2. 错误上报
-3. 对引用的第三方ui库进行一层封装，便于升级后api替换
+2. 页面错误上报
+3. 所有用到的第三方、window对象/方法或document对象/方法进行一层封装，以便后续升级依赖或者优化
+4. 利用requestAnimationFrame实现高精度的timeout方法；相较于Date.now可优先使用精度更高的performance.now，
 
 ## css方面
 
@@ -31,6 +32,8 @@
 
 ## webpack配置
 1. treeshaking
+   - terser依赖export的静态检查来进行treeshaking，老旧代码中client侧如果有采用commonjs写法的exports需要改成es6的export
+   - export default只用于导出一个变量的情景
 2. source-map(配合错误上报定位出错的代码片段)
 3. 访问量大的网站启用cdn（设置publicPath）
 4. import的文件根据组件加载时机设置preload或prefetch
