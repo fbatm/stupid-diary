@@ -16,6 +16,8 @@
 
 ## 事件循环
 1. [浏览器环境与node环境下事件循环的区别](https://zhuanlan.zhihu.com/p/33058983)
+2. [nodejs.org关于node事件循环的解释](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+3. [mdn关于事件循环的描述](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
 
 ## js
 1. [es5规定](http://ecma-international.org/ecma-262/5.1/)
@@ -35,5 +37,6 @@
 
 ## AST & compiler
 1. [the-super-tiny-compiler](https://github.com/jamiebuilds/the-super-tiny-compiler/blob/master/the-super-tiny-compiler.js)通过简易的编译器代码理解编译器
-2. [AST抽象语法树](https://www.jianshu.com/p/019d449a9282)
-3. [AST在线解析](https://astexplorer.net/)
+2. [how to build a programming language](https://github.com/ftomassetti/LangSandbox)
+3. [AST抽象语法树](https://www.jianshu.com/p/019d449a9282)
+4. [AST在线解析](https://astexplorer.net/)
