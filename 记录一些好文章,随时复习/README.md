@@ -19,6 +19,11 @@
 2. [nodejs.org关于node事件循环的解释](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
 3. [mdn关于事件循环的描述](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
 
+## cookie
+1. [cookie概览](https://zhuanlan.zhihu.com/p/101315335)
+   [cookie概览](https://my.oschina.net/wangzhijie/blog/4652306)
+2. [cookie应用](https://zhuanlan.zhihu.com/p/31852168)
+
 ## js
 1. [es5规定](http://ecma-international.org/ecma-262/5.1/)
 2. [相等判断(document.all==undefined)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness)
@@ -40,3 +45,8 @@
 2. [how to build a programming language](https://github.com/ftomassetti/LangSandbox)
 3. [AST抽象语法树](https://www.jianshu.com/p/019d449a9282)
 4. [AST在线解析](https://astexplorer.net/)
+
+## 其他
+1. [MDN上的IndexedDB](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API)
+2. [websql的api参考](https://www.runoob.com/html/html5-web-sql.html)
+3. [磁盘IO](https://cloud.tencent.com/developer/article/1446715)
