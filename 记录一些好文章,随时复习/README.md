@@ -33,12 +33,18 @@
 6. [html标签中class="no-js"的由来(Modernizr)](https://blog.justwd.net/2012/02/about-no-js/)
 7. [js处理文件的示例](https://developer.mozilla.org/zh-CN/docs/Web/API/File/Using_files_from_web_applications)
 8. [addEventListener详解](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
+9. [node-server性能优化](https://www.expressjs.com.cn/advanced/best-practice-performance.html)
 
 ## css
 1. [包含块](https://developer.mozilla.org/zh-CN/docs/Web/CSS/All_About_The_Containing_Block)
 2. [定位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position)
 3. [层叠上下文](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
 4. [浮动与定位的层叠](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Understanding_z_index/Stacking_and_float)
+
+## 安全
+1. [OWASP/CheatSheetSeries](https://cheatsheetseries.owasp.org/)
+2. [SSL/TSL工作原理](https://zhuanlan.zhihu.com/p/36981565)
+3. 运行`npm audit`查看依赖包的安全性
 
 ## AST & compiler
 1. [the-super-tiny-compiler](https://github.com/jamiebuilds/the-super-tiny-compiler/blob/master/the-super-tiny-compiler.js)通过简易的编译器代码理解编译器
@@ -50,3 +56,16 @@
 1. [MDN上的IndexedDB](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API)
 2. [websql的api参考](https://www.runoob.com/html/html5-web-sql.html)
 3. [磁盘IO](https://cloud.tencent.com/developer/article/1446715)
+4. [pm2用cluster模式启用后的node error: spawn e2big错误](https://zhuanlan.zhihu.com/p/74056339)
+   - 跟踪代码可知cluster模式下调用node的cluster.fork传入的参数为process.env的字符串结果，部署环境中process.env中实际存在超多变量导致抛出异常
+      ```
+      // node.js cluster clients can not receive deep-level objects or arrays in the forked process, e.g.:
+      // { "args": ["foo", "bar"], "env": { "foo1": "bar1" }} will be parsed to
+      // { "args": "foo, bar", "env": "[object Object]"}
+      // So we passing a stringified JSON here.
+      clu = cluster.fork({pm2_env: JSON.stringify(env_copy), windowsHide: true});
+      ```
+   - 4.5.1版本中可以通过设置`--filter_env [envs]`过滤环境变量(https://github.com/Unitech/pm2/pull/4596)
+     配置文件中设置`filter_env`进行过滤
+5. [chrome中，https网站上无法下载http协议的附件](https://www.ghacks.net/2020/10/08/chrome-is-blocking-downloads-here-is-why/)
+   - <a target="_blank" href="http://download-link">download</a>，若download-link的response中设置了响应类型为attachment，chrome默认不会提示也不会下载；若是单纯打开一个http的网站则没问题
