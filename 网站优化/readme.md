@@ -15,9 +15,41 @@
 7. 避免一般情况下的堆内存溢出，添加--max-old-space-size=4096参数扩容；频繁出现此问题需要根据具体错误来定位
 8. renderToNodeStream/renderToStaticNodeStream返回流
 9. 预渲染
+10. 按照[express最佳性能实践](https://www.expressjs.com.cn/advanced/best-practice-performance.html)的说法，console的打印方法为同步执行，会一定程度上阻塞进程，影响server的响应速度。建议用`debug`模块记录debug信息，用`winston`或`Bunyan`之类的库记录日志
+   - winston为例：
+   ```
+      //winston/console.js
 
+      if (this.stderrLevels[level]) {
+         process.stderr.write(output + this.eol);
+      } else {
+         process.stdout.write(output + this.eol);
+      }
 
+      //
+      // Emit the `logged` event immediately because the event loop
+      // will not exit until `process.stdout` has drained anyway.
+      //
+      self.emit('logged');
+      callback(null, true);
+   ```
+   如winston中的注释所说，不等std结束就emit事件
+   - [node中关于console的说明](https://nodejs.org/dist/latest-v14.x/docs/api/process.html#process_a_note_on_process_i_o)
+11. 使用PM2守护进程
+    - 参照[nodejs.org](https://nodejs.org/dist/latest-v14.x/docs/api/process.html#process_event_uncaughtexception)关于`uncaughtException`用法的说明
+      ```
+      The correct use of 'uncaughtException' is to perform synchronous cleanup of allocated resources (e.g. file descriptors, handles, etc) before shutting down the process. It is not safe to resume normal operation after 'uncaughtException'.
 
+      To restart a crashed application in a more reliable way, whether 'uncaughtException' is emitted or not, an external monitor should be employed in a separate process to detect application failures and recover or restart as needed.
+      ```
+    - pm2依赖的chokidar中optionalDependencies.fsevents可能无法正确被npm识别为optionalDependencies（fsevents为macOS下的依赖，其他操作系统安装会报错），采用yarn安装的时候注意需要有yarn.lock文件辅助，在yarn.lock中标记了fsevents为optionalDependencies
+      详见[yarn官方文档](https://classic.yarnpkg.com/en/docs/yarn-lock)
+      ```
+      In order to get consistent installs across machines, Yarn needs more information than the dependencies you configure in your package.json. Yarn needs to store exactly which versions of each dependency were installed.
+      ```
+    - [pm2官方说明文档](https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/)
+    - cluster mode下抛出的`node error: spawn e2big`问题待解决
+    - [采用`pm2-runtime`启动](https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/#docker-integration)
 ## js方面
 1. 渐进式注水+骨架屏
 2. 页面错误上报
