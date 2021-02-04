@@ -42,11 +42,7 @@
 
       To restart a crashed application in a more reliable way, whether 'uncaughtException' is emitted or not, an external monitor should be employed in a separate process to detect application failures and recover or restart as needed.
       ```
-    - pm2依赖的chokidar中optionalDependencies.fsevents可能无法正确被npm识别为optionalDependencies（fsevents为macOS下的依赖，其他操作系统安装会报错），采用yarn安装的时候注意需要有yarn.lock文件辅助，在yarn.lock中标记了fsevents为optionalDependencies
-      详见[yarn官方文档](https://classic.yarnpkg.com/en/docs/yarn-lock)
-      ```
-      In order to get consistent installs across machines, Yarn needs more information than the dependencies you configure in your package.json. Yarn needs to store exactly which versions of each dependency were installed.
-      ```
+    - pm2依赖的chokidar中optionalDependencies.fsevents可能无法正确被npm识别为optionalDependencies,此时需要注意如果是通过`yarn install --prefer-offline`安装，yarn的`cache-folder`设置是否合理
     - [pm2官方说明文档](https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/)
     - cluster mode下抛出的`node error: spawn e2big`问题待解决
     - [采用`pm2-runtime`启动](https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/#docker-integration)
@@ -54,7 +50,8 @@
 1. 渐进式注水+骨架屏
 2. 页面错误上报
 3. 所有用到的第三方、window对象/方法或document对象/方法进行一层封装，以便后续升级依赖或者优化
-4. 利用requestAnimationFrame实现高精度的timeout方法；相较于Date.now可优先使用精度更高的performance.now，
+4. 利用requestAnimationFrame实现高精度的timeout方法；相较于Date.now可优先使用精度更高的performance.now
+5. 利用serviceWorker缓存文件后，再次访问页面需要刷新两次才能获取最新的文件(第一次会读取缓存)
 
 ## css方面
 
