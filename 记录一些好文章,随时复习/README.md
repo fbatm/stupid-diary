@@ -34,12 +34,16 @@
 7. [js处理文件的示例](https://developer.mozilla.org/zh-CN/docs/Web/API/File/Using_files_from_web_applications)
 8. [addEventListener详解](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
 9. [node-server性能优化](https://www.expressjs.com.cn/advanced/best-practice-performance.html)
+10. [react-team-principles](https://overreacted.io/what-are-the-react-team-principles/)
 
 ## css
 1. [包含块](https://developer.mozilla.org/zh-CN/docs/Web/CSS/All_About_The_Containing_Block)
 2. [定位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position)
 3. [层叠上下文](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
 4. [浮动与定位的层叠](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Understanding_z_index/Stacking_and_float)
+
+## webpack
+1. [webpack实用配置](https://zhuanlan.zhihu.com/p/342035766)
 
 ## 安全
 1. [OWASP/CheatSheetSeries](https://cheatsheetseries.owasp.org/)
@@ -66,6 +70,24 @@
       clu = cluster.fork({pm2_env: JSON.stringify(env_copy), windowsHide: true});
       ```
    - 4.5.1版本中可以通过设置`--filter_env [envs]`过滤环境变量(https://github.com/Unitech/pm2/pull/4596)
-     配置文件中设置`filter_env`进行过滤
+     配置文件中设置`filter_env`进行过滤，从代码来看，一般设置为`true`即可
+     ```
+      function filterEnv (envObj) {
+         if (app.filter_env == true)
+            return {}
+
+         if (typeof app.filter_env === 'string') {
+            delete envObj[app.filter_env]
+            return envObj
+         }
+
+         var new_env = {};
+         var allowedKeys = app.filter_env.reduce((acc, current) =>
+                                                acc.filter( item => !item.includes(current)), Object.keys(envObj))
+         allowedKeys.forEach( key => new_env[key] = envObj[key]);
+         return new_env
+      }
+     ```
 5. [chrome中，https网站上无法下载http协议的附件](https://www.ghacks.net/2020/10/08/chrome-is-blocking-downloads-here-is-why/)
    - <a target="_blank" href="http://download-link">download</a>，若download-link的response中设置了响应类型为attachment，chrome默认不会提示也不会下载；若是单纯打开一个http的网站则没问题
+6. [node debug](https://zhuanlan.zhihu.com/p/30264842)
