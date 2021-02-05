@@ -42,7 +42,12 @@
 
       To restart a crashed application in a more reliable way, whether 'uncaughtException' is emitted or not, an external monitor should be employed in a separate process to detect application failures and recover or restart as needed.
       ```
-    - pm2依赖的chokidar中optionalDependencies.fsevents可能无法正确被npm识别为optionalDependencies,此时需要注意如果是通过`yarn install --prefer-offline`安装，yarn的`cache-folder`设置是否合理
+    - pm2依赖的chokidar中optionalDependencies.fsevents可能无法正确被npm识别为optionalDependencies（fsevents为macOS下的依赖，其他操作系统安装会报错），采用yarn安装的时候注意需要有yarn.lock文件辅助，在yarn.lock中标记了fsevents为optionalDependencies
+      详见[yarn官方文档](https://classic.yarnpkg.com/en/docs/yarn-lock)
+      ```
+      In order to get consistent installs across machines, Yarn needs more information than the dependencies you configure in your package.json. Yarn needs to store exactly which versions of each dependency were installed.
+      ```
+      TODO：ali云效的flow上有个流水线加上lock.json依旧报错，在`yarn install --prefer-offline`前重新设置`cache-folder`后通过，目前尚未搞明白原因
     - [pm2官方说明文档](https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/)
     - cluster mode下抛出的`node error: spawn e2big`问题待解决
     - [采用`pm2-runtime`启动](https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/#docker-integration)
