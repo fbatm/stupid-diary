@@ -91,3 +91,5 @@
 5. [chrome中，https网站上无法下载http协议的附件](https://www.ghacks.net/2020/10/08/chrome-is-blocking-downloads-here-is-why/)
    - <a target="_blank" href="http://download-link">download</a>，若download-link的response中设置了响应类型为attachment，chrome默认不会提示也不会下载；若是单纯打开一个http的网站则没问题
 6. [node debug](https://zhuanlan.zhihu.com/p/30264842)
+7. [react源码辅助理解](https://react.iamkasong.com/)
+8. [react fiber as virtual stack frame](https://indepth.dev/posts/1007/the-how-and-why-on-reacts-usage-of-linked-list-in-fiber-to-walk-the-components-tree)
