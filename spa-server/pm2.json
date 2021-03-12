@@ -1,0 +1,29 @@
+{
+  "name": "spa-web-server",
+  "script": "server.js",
+  "kill_timeout": 25000,
+  "out_file": "/dev/null",
+  "filter_env": true,
+  "instances": "max",
+  "exec_mode": "cluster",
+  "env": {
+    "NODE_SCENE": "develop",
+    "NODE_ENV": "development",
+    "APP_PORT": "3333"
+  },
+  "env_test": {
+    "NODE_SCENE": "test",
+    "NODE_ENV": "production",
+    "APP_PORT": "3333"
+  },
+  "env_preview": {
+    "NODE_SCENE": "preview",
+    "NODE_ENV": "production",
+    "APP_PORT": "3333"
+  },
+  "env_online": {
+    "NODE_SCENE": "online",
+    "NODE_ENV": "production",
+    "APP_PORT": "3333"
+  }
+}

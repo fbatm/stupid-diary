@@ -1,0 +1,22 @@
+{
+  "description": "web service & api proxy",
+  "main": "server.js",
+  "dependencies": {
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-compress": "^5.0.1",
+    "koa-helmet": "^6.0.0",
+    "koa-proxy": "^1.0.0-alpha.3",
+    "koa-send": "^5.0.1",
+    "koa-router": "^10.0.0",
+    "winston": "^3.3.3",
+    "pm2": "^4.5.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "inspect": "node --inspect=9229 server.js",
+    "online": "pm2-runtime start pm2.json --env online",
+    "preview": "pm2-runtime start pm2.json --env preview",
+    "test": "pm2-runtime start pm2.json --env test"
+  }
+}
