@@ -56,6 +56,10 @@
 3. [AST抽象语法树](https://www.jianshu.com/p/019d449a9282)
 4. [AST在线解析](https://astexplorer.net/)
 
+## h5首屏加载优化
+1. [ali方案](https://zhuanlan.zhihu.com/p/33629180)
+2. [tx-qq方案](https://cloud.tencent.com/developer/article/1632630?from=article.detail.1071723)
+
 ## 其他
 1. [MDN上的IndexedDB](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API)
 2. [websql的api参考](https://www.runoob.com/html/html5-web-sql.html)
