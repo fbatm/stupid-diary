@@ -1,0 +1,2 @@
+1. 老项目中为了实现多页签多账号登录，将token存放在了sessionStorage中；近期chrome升级后给target="_blank"的a标签默认给予了ref="noopener"效果，导致打开的子窗口无法共享父窗口的sessionStorage，可手动设置rel="opener"来解决。
+   - 根据mdn上关于[链接类型](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Link_types)的说明，opener目前属于实验性api，得注意测试浏览器兼容性后再落实.
