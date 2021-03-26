@@ -45,6 +45,9 @@
 ## webpack
 1. [webpack实用配置](https://zhuanlan.zhihu.com/p/342035766)
 
+## git
+1. [git-workflow](https://sandofsky.com/workflow/git-workflow/)
+
 ## 安全
 1. [OWASP/CheatSheetSeries](https://cheatsheetseries.owasp.org/)
 2. [SSL/TSL工作原理](https://zhuanlan.zhihu.com/p/36981565)
