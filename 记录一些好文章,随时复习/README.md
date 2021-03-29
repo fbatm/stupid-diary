@@ -13,6 +13,13 @@
 7. [网站性能优化](https://blog.csdn.net/john_f_lau/article/details/11020429)
 8. [渲染优化](https://juejin.cn/post/6898235695245197325)
 9. [现代化网站指导](https://web.dev/learn/)
+10. [浏览器页签切换事件visibilitychange](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event)
+11. `WebAssembly`给予浏览器执行其他语言的能力
+   - [WebAssembly官网](https://webassembly.org/)
+   - [Emscripten 官网](http://kripken.github.io/emscripten-site/)
+   - [mdn上的说明](https://developer.mozilla.org/en-US/docs/WebAssembly)
+   - [网易游戏案例](https://zhuanlan.zhihu.com/p/101686085)
+   - [白鹭引擎](https://blog.csdn.net/chenqiuge1984/article/details/80131055)
 
 ## 事件循环
 1. [浏览器环境与node环境下事件循环的区别](https://zhuanlan.zhihu.com/p/33058983)
