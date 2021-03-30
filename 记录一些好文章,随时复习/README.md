@@ -42,6 +42,7 @@
 8. [addEventListener详解](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
 9. [node-server性能优化](https://www.expressjs.com.cn/advanced/best-practice-performance.html)
 10. [react-team-principles](https://overreacted.io/what-are-the-react-team-principles/)
+11. [实现new操作符](https://blog.csdn.net/cc18868876837/article/details/103149502)
 
 ## css
 1. [包含块](https://developer.mozilla.org/zh-CN/docs/Web/CSS/All_About_The_Containing_Block)
