@@ -2,6 +2,7 @@
 
 ## v8相关
 1. [chrome V8工作原理](https://segmentfault.com/a/1190000037435824)
+2. [async与promise](https://v8.js.cn/blog/fast-async/)
 
 ## 浏览器相关
 1. [浏览器缓存机制](https://www.jianshu.com/p/54cc04190252)
@@ -42,7 +43,10 @@
 8. [addEventListener详解](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
 9. [node-server性能优化](https://www.expressjs.com.cn/advanced/best-practice-performance.html)
 10. [react-team-principles](https://overreacted.io/what-are-the-react-team-principles/)
-11. [实现new操作符](https://blog.csdn.net/cc18868876837/article/details/103149502)
+11. new操作符
+   - [what-is-the-new-keyword-in-javascript](https://stackoverflow.com/questions/1646698/what-is-the-new-keyword-in-javascript)
+   - [实现new操作符](https://blog.csdn.net/cc18868876837/article/details/103149502)
+   - [__proto__、prototype、constructor](https://blog.csdn.net/cc18868876837/article/details/81211729)
 
 ## css
 1. [包含块](https://developer.mozilla.org/zh-CN/docs/Web/CSS/All_About_The_Containing_Block)
