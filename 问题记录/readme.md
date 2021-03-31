@@ -6,3 +6,4 @@
    用LF换行符提交，检出后交给编辑器处理
    - 提交检出均不转换 `git config --global core.autocrlf false`   
    统一编辑器的换行符设置
+4. 浮点数通过左移或右移0未来取整
