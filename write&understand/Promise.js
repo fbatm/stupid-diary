@@ -7,45 +7,58 @@ function Promise(resolver){
 
   this.status = 'pending';
   
-  this.thenQueue = [];
-  this.catchQueue = [];
-  return this;
+  this.queue = [];
 }
 
 Promise.prototype.resolve = function(value){
   if(this.status === 'pending'){
-    this.value = value;
-    this.thenQueue.forEach(cb => {
-      setTimeout(()=>{cb(this.value)}, 0);
-    });
     this.status = 'fullfilled';
+  }
+  this.value = value;
+  while(this.queue.length){
+    const {type, cb} = this.queue.shift();
+    try{
+      if(type === 'then'){
+        this.value = cb(value);
+      }
+    }catch(e){
+      this.reject(this.value);
+    }
   }
 }
 
 Promise.prototype.reject = function(value){
   if(this.status === 'pending'){
-    this.value = value;
-    this.catchQueue.forEach(cb => {
-      setTimeout(()=>{cb(this.value)}, 0);
-    });
     this.status = 'rejected';
   }
+  this.value = value;
+  while(this.queue.length){
+    const {type, cb} = this.queue.shift();
+
+    if(type === 'catch'){
+      try{
+        this.value = cb(value);
+      }catch(e){
+        this.reject(this.value);
+      }
+      break;
+    }
+  }
+  this.resolve(this.value);
 }
 
 Promise.prototype.then = function(cb){
-  if(this.status === 'pending'){
-    this.thenQueue.push(cb);
-  }else if(this.status === 'fullfiled'){
-    cb(this.value);
-  }
+  this.queue.push({
+    type: 'then',
+    cb
+  });
 }
 
 Promise.prototype.catch = function(cb){
-  if(this.status === 'pending'){
-    this.thenQueue.push(cb);
-  }else if(this.status === 'rejected'){
-    cb(this.value);
-  }
+  this.queue.push({
+    type: 'catch',
+    cb
+  });
 }
 
 Promise.resolve = function(value){
