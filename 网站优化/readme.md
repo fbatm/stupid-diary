@@ -68,6 +68,7 @@
 ## html方面
 1. 对cdn的域名设置dns-prefetch
 2. 结合source-map, preload当前页面所用到的js文件
+3. [移动页面加速-AMP](https://amp.dev/documentation/guides-and-tutorials/)
 
 ## webpack配置
 1. treeshaking
