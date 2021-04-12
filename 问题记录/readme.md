@@ -7,3 +7,4 @@
    - 提交检出均不转换 `git config --global core.autocrlf false`   
    统一编辑器的换行符设置
 4. 浮点数通过左移或右移0未来取整
+5. react函数组件需注意闭包问题，例如点击事件中访问到state是点击时的值
