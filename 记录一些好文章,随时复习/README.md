@@ -115,3 +115,4 @@
 6. [node debug](https://zhuanlan.zhihu.com/p/30264842)
 7. [react源码辅助理解](https://react.iamkasong.com/)
 8. [react fiber as virtual stack frame](https://indepth.dev/posts/1007/the-how-and-why-on-reacts-usage-of-linked-list-in-fiber-to-walk-the-components-tree)
+9. [Dan的react解释](https://overreacted.io/)
