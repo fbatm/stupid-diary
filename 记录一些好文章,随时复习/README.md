@@ -5,6 +5,8 @@
 2. [async与promise](https://v8.js.cn/blog/fast-async/)
 3. [mdn内存管理](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management)
 4. [查看node内存使用情况](https://www.lema.fun/post/47e93hs9s)
+5. [shapes&inline-caches](https://mathiasbynens.be/notes/shapes-ics)
+6. [prototypes](https://mathiasbynens.be/notes/prototypes)
 
 ## 浏览器相关
 1. [浏览器缓存机制](https://www.jianshu.com/p/54cc04190252)
