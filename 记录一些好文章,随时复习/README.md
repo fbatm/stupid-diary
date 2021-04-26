@@ -26,6 +26,7 @@
    - [网易游戏案例](https://zhuanlan.zhihu.com/p/101686085)
    - [白鹭引擎](https://blog.csdn.net/chenqiuge1984/article/details/80131055)
 12. [使用mkcert搭建本地https环境](https://cloud.tencent.com/developer/article/1514003)
+13. [es-modules](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/)
 
 ## 事件循环
 1. [浏览器环境与node环境下事件循环的区别](https://zhuanlan.zhihu.com/p/33058983)
@@ -84,37 +85,9 @@
 1. [MDN上的IndexedDB](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API)
 2. [websql的api参考](https://www.runoob.com/html/html5-web-sql.html)
 3. [磁盘IO](https://cloud.tencent.com/developer/article/1446715)
-4. [pm2用cluster模式启用后的node error: spawn e2big错误](https://zhuanlan.zhihu.com/p/74056339)
-   - 跟踪代码可知cluster模式下调用node的cluster.fork传入的参数为process.env的字符串结果，部署环境中process.env中实际存在超多变量导致抛出异常
-      ```
-      // node.js cluster clients can not receive deep-level objects or arrays in the forked process, e.g.:
-      // { "args": ["foo", "bar"], "env": { "foo1": "bar1" }} will be parsed to
-      // { "args": "foo, bar", "env": "[object Object]"}
-      // So we passing a stringified JSON here.
-      clu = cluster.fork({pm2_env: JSON.stringify(env_copy), windowsHide: true});
-      ```
-   - 4.5.1版本中可以通过设置`--filter_env [envs]`过滤环境变量(https://github.com/Unitech/pm2/pull/4596)
-     配置文件中设置`filter_env`进行过滤，从代码来看，一般设置为`true`即可
-     ```
-      function filterEnv (envObj) {
-         if (app.filter_env == true)
-            return {}
-
-         if (typeof app.filter_env === 'string') {
-            delete envObj[app.filter_env]
-            return envObj
-         }
-
-         var new_env = {};
-         var allowedKeys = app.filter_env.reduce((acc, current) =>
-                                                acc.filter( item => !item.includes(current)), Object.keys(envObj))
-         allowedKeys.forEach( key => new_env[key] = envObj[key]);
-         return new_env
-      }
-     ```
-5. [chrome中，https网站上无法下载http协议的附件](https://www.ghacks.net/2020/10/08/chrome-is-blocking-downloads-here-is-why/)
+4. [chrome中，https网站上无法下载http协议的附件](https://www.ghacks.net/2020/10/08/chrome-is-blocking-downloads-here-is-why/)
    - <a target="_blank" href="http://download-link">download</a>，若download-link的response中设置了响应类型为attachment，chrome默认不会提示也不会下载；若是单纯打开一个http的网站则没问题
-6. [node debug](https://zhuanlan.zhihu.com/p/30264842)
-7. [react源码辅助理解](https://react.iamkasong.com/)
-8. [react fiber as virtual stack frame](https://indepth.dev/posts/1007/the-how-and-why-on-reacts-usage-of-linked-list-in-fiber-to-walk-the-components-tree)
-9. [Dan的react解释](https://overreacted.io/)
+5. [node debug](https://zhuanlan.zhihu.com/p/30264842)
+6. [react源码辅助理解](https://react.iamkasong.com/)
+7. [react fiber as virtual stack frame](https://indepth.dev/posts/1007/the-how-and-why-on-reacts-usage-of-linked-list-in-fiber-to-walk-the-components-tree)
+8. [Dan的react解释](https://overreacted.io/)

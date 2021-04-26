@@ -9,3 +9,31 @@
 4. 浮点数通过左移或右移0未来取整
 5. react函数组件需注意闭包问题，例如点击事件中访问到state是点击时的值
 6. windows下引用文件的若不注意大小写可能导致其他系统下文件查找失败
+7. [pm2用cluster模式启用后的node error: spawn e2big错误](https://zhuanlan.zhihu.com/p/74056339)
+   - 跟踪代码可知cluster模式下调用node的cluster.fork传入的参数为process.env的字符串结果，部署环境中process.env中实际存在超多变量导致抛出异常
+      ```
+      // node.js cluster clients can not receive deep-level objects or arrays in the forked process, e.g.:
+      // { "args": ["foo", "bar"], "env": { "foo1": "bar1" }} will be parsed to
+      // { "args": "foo, bar", "env": "[object Object]"}
+      // So we passing a stringified JSON here.
+      clu = cluster.fork({pm2_env: JSON.stringify(env_copy), windowsHide: true});
+      ```
+   - 4.5.1版本中可以通过设置`--filter_env [envs]`过滤环境变量(https://github.com/Unitech/pm2/pull/4596)
+     配置文件中设置`filter_env`进行过滤，从代码来看，一般设置为`true`即可
+     ```
+      function filterEnv (envObj) {
+         if (app.filter_env == true)
+            return {}
+
+         if (typeof app.filter_env === 'string') {
+            delete envObj[app.filter_env]
+            return envObj
+         }
+
+         var new_env = {};
+         var allowedKeys = app.filter_env.reduce((acc, current) =>
+                                                acc.filter( item => !item.includes(current)), Object.keys(envObj))
+         allowedKeys.forEach( key => new_env[key] = envObj[key]);
+         return new_env
+      }
+     ```
