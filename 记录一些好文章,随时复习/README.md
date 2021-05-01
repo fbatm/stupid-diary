@@ -27,6 +27,7 @@
    - [白鹭引擎](https://blog.csdn.net/chenqiuge1984/article/details/80131055)
 12. [使用mkcert搭建本地https环境](https://cloud.tencent.com/developer/article/1514003)
 13. [es-modules](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/)
+14. [浏览器工作概览](https://blog.poetries.top/browser-working-principle)
 
 ## 事件循环
 1. [浏览器环境与node环境下事件循环的区别](https://zhuanlan.zhihu.com/p/33058983)
