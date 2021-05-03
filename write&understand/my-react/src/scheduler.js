@@ -1,9 +1,11 @@
 import { fibers_to_delete } from "./shared";
 import { reconcileChildren } from "./reconciler";
 
-let nextUnitOfWork = null;
-let wipRoot = null;
-let currentRoot = null;
+export let wipFiber = null;
+export let wipHookIndex = 0;
+export let nextUnitOfWork = null;
+export let wipRoot = null;
+export let currentRoot = null;
 
 function commitRoot() {
   fibers_to_delete.forEach(commitWork);
@@ -86,9 +88,18 @@ function createDomNode(fiber) {
 function performUnitOfWork(fiber) {
   if (typeof fiber.type === "object") {
     reconcileChildren(fiber, [fiber.type]);
+  } else if (typeof fiber.type === "function") {
+    if (fiber.type.toString().startsWith("class")) {
+      reconcileChildren(fiber, [new fiber.type(fiber.props).render()]);
+    } else {
+      wipFiber = fiber;
+      wipFiber.hooks = [];
+      wipHookIndex = 0;
+      reconcileChildren(fiber, [fiber.type(fiber.props)]);
+    }
   } else {
     reconcileChildren(fiber, fiber.props.children);
-    if (!fiber.dom) {
+    if (fiber.type && !fiber.dom) {
       fiber.dom = createDomNode(fiber);
     }
   }
@@ -115,9 +126,9 @@ function workloop(idleDeadline) {
 
   if (!nextUnitOfWork && wipRoot) {
     commitRoot();
+  } else {
+    window.requestIdleCallback(workloop);
   }
-
-  window.requestIdleCallback(workloop);
 }
 
 export function startWork(fiberRoot) {

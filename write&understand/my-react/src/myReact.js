@@ -25,9 +25,11 @@ function render(reactElement, container) {
   startWork({
     dom: container,
     props: {
-      children: [reactElement]
-    }
+      children: [reactElement],
+    },
   });
 }
 
 export default { createElement, render };
+export * from "./BaseClassComponent";
+export * from "./useState";
