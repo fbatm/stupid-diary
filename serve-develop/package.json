@@ -1,0 +1,24 @@
+{
+  "name": "serve-develop",
+  "version": "1.0.0",
+  "description": "visit the same port for dev&prod",
+  "main": "server.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "install": "run-p install:*",
+    "install:dev-app": "cd dev-app && yarn install",
+    "install:dev-app2": "cd dev-app2 && yarn install",
+    "start:all": "run-p \"start:serve\" \"start:dev-app\" \"start:dev-app2\"",
+    "start:dev-app": "cd dev-app && yarn start",
+    "start:dev-app2": "cd dev-app2 && yarn dev",
+    "start:serve": "nodemon --watch server.js server.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "open": "^8.2.0"
+  }
+}
