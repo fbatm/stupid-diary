@@ -42,3 +42,4 @@
 
 8. package.json 中 scripts 里的 install 命令执行时机
    - [install, postinstall: Run AFTER the package is installed](https://www.npmjs.cn/misc/scripts/)
+9. 尽量不要`ReactDOM.createPortal`到 document.body 上, [see reason](https://stackoverflow.com/questions/49504546/is-it-safe-to-use-reactdom-createportal-with-document-body)
