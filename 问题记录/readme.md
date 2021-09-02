@@ -43,3 +43,6 @@
 8. package.json 中 scripts 里的 install 命令执行时机
    - [install, postinstall: Run AFTER the package is installed](https://www.npmjs.cn/misc/scripts/)
 9. 尽量不要`ReactDOM.createPortal`到 document.body 上, [see reason](https://stackoverflow.com/questions/49504546/is-it-safe-to-use-reactdom-createportal-with-document-body)
+10. `transform-style: preserve-3d`会影响子元素fixed的定位: Elements with transforms act as a containing block for fixed position descendants, so position:fixed under something with a transform no longer has fixed behavior.They do work when applied to the same element; the element will be positioned as fixed, and then transformed.
+   - (stackoverflow问题)[https://stackoverflow.com/questions/2637058/positions-fixed-doesnt-work-when-using-webkit-transform]
+   - (W3文档)[https://www.w3.org/TR/css-transforms-1/]
