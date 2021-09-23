@@ -111,3 +111,4 @@
 4. [chrome 中，https 网站上无法下载 http 协议的附件](https://www.ghacks.net/2020/10/08/chrome-is-blocking-downloads-here-is-why/)
    - <a target="_blank" href="http://download-link">download</a>，若 download-link 的 response 中设置了响应类型为 attachment，chrome 默认不会提示也不会下载；若是单纯打开一个 http 的网站则没问题
 5. [node debug](https://zhuanlan.zhihu.com/p/30264842)
+6. [outlook怪癖](https://www.cnblogs.com/dolphinX/p/4081828.html)
