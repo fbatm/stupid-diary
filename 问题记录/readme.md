@@ -46,3 +46,4 @@
 10. `transform-style: preserve-3d`会影响子元素fixed的定位: Elements with transforms act as a containing block for fixed position descendants, so position:fixed under something with a transform no longer has fixed behavior.They do work when applied to the same element; the element will be positioned as fixed, and then transformed.
    - (stackoverflow问题)[https://stackoverflow.com/questions/2637058/positions-fixed-doesnt-work-when-using-webkit-transform]
    - (W3文档)[https://www.w3.org/TR/css-transforms-1/]
+11. [overflow:hidden对inline-block元素基线的影响](https://www.cnblogs.com/AliceX-J/p/5731755.html)
