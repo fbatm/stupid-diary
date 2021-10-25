@@ -47,3 +47,6 @@
    - (stackoverflow问题)[https://stackoverflow.com/questions/2637058/positions-fixed-doesnt-work-when-using-webkit-transform]
    - (W3文档)[https://www.w3.org/TR/css-transforms-1/]
 11. [overflow:hidden对inline-block元素基线的影响](https://www.cnblogs.com/AliceX-J/p/5731755.html)
+12. 英文中数值序列后缀st/nd/rd:
+   - [规则](https://learnersdictionary.com/qa/How-To-Write-Ordinal-Numbers)
+   - [示例](https://www.cnblogs.com/yu412/p/13955146.html)
