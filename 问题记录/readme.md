@@ -50,3 +50,39 @@
 12. 英文中数值序列后缀st/nd/rd:
    - [规则](https://learnersdictionary.com/qa/How-To-Write-Ordinal-Numbers)
    - [示例](https://www.cnblogs.com/yu412/p/13955146.html)
+13. 使用React.memo优化组件性能的时候，若props中传入函数，需留意闭包问题
+   ```javascript
+   import React from "react";
+
+   function Comp({ count, cb }) {
+     return (
+       <>
+         {new Array(count).fill(0).map((_x, index) => (
+           <li key={index}>{index}</li>
+         ))}
+         <li>
+           <button onClick={cb}>say hi</button>
+         </li>
+       </>
+     );
+   }
+
+   const MemoComp = React.memo(Comp, () => true);
+
+   function App() {
+     const [count, setCount] = React.useState(0);
+
+     function cb() {
+       console.log(count);
+     }
+     return (
+       <>
+         <button onClick={() => setCount(count + 1)}>click to add {count}</button>
+         <ul>
+           <Comp count={count} cb={cb} />
+           <MemoComp count={count} cb={cb} />
+         </ul>
+      </>
+     );
+   }
+   ```
